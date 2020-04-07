@@ -172,11 +172,14 @@ xlabel('E/N_0, dB')
 figure(3);
 semilogy(snr_arr, T);
 % ------------------------------ Функции ----------------------------------
-% Функция кодера CRC
-% Аргументы:
-% 
 
 function [a_x] = CRCcoder(m_x, g_x)
+% Функция кодера CRC
+% Аргументы:
+% m_x - сообщение
+% g_x - порождающий многочлен
+% Результат:
+% a_x - кодовое слово
     n = length(m_x) + length(g_x)-1; % len of a_x
     a_x = [zeros(1, n - length(m_x)), m_x]; % a_x * x^r (сдвиг)
     [~, c_x] = gfdeconv(a_x, g_x); % a_x mod g_x
